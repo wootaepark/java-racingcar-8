@@ -4,12 +4,13 @@ public class InputValidator {
 
     public static String[] validateCarNames(String input) {
         String[] names = input.split(",");
-        for (String name : names) {
-            if (name.isEmpty()) {
+        for (int i = 0; i < names.length; i++) {
+            names[i] = names[i].trim();
+            if (names[i].isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
             }
 
-            if (name.length() > 5) {
+            if (names[i].length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
         }
