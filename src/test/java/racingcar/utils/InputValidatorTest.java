@@ -40,4 +40,12 @@ class InputValidatorTest {
                 () -> InputValidator.validateCarNames(input));
         assertEquals("자동차 이름은 5자 이하만 가능합니다.", exception.getMessage());
     }
+
+    @Test
+    void 잘못된_라운드_수_입력_예외() {
+        String inputFreq = "3k";
+        Exception exception = assertThrows(IllegalArgumentException.class
+                , () -> InputValidator.validateInputRound(inputFreq));
+        assertEquals("올바르지 않은 형태의 라운드 수 입력입니다.", exception.getMessage());
+    }
 }
