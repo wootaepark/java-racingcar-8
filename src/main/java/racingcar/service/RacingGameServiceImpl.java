@@ -27,7 +27,7 @@ public class RacingGameServiceImpl implements RacingGameService {
 
     private void printProgress(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
-            System.out.println(racingCar.getName() + ":" + racingCar.printProgress());
+            System.out.println(racingCar.getName() + " : " + racingCar.printProgress());
         }
     }
 
