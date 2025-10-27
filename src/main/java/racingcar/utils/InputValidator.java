@@ -16,4 +16,12 @@ public class InputValidator {
         }
         return names;
     }
+
+    public static void validateInputRound(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바르지 않은 형태의 라운드 수 입력입니다.");
+        }
+    }
 }

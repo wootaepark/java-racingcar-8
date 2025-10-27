@@ -15,6 +15,8 @@ public class InputView {
 
     public static int getFreq() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        String freq = Console.readLine();
+        InputValidator.validateInputRound(freq);
+        return Integer.parseInt(freq);
     }
 }
