@@ -1,27 +1,37 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.model.RacingCar;
+import racingcar.service.RacingCarService;
+import racingcar.service.RacingCarServiceImpl;
+import racingcar.service.RacingGameEndService;
+import racingcar.service.RacingGameEndServiceImpl;
+import racingcar.service.RacingGameService;
+import racingcar.service.RacingGameServiceImpl;
 import racingcar.view.InputView;
 
 public class RacingCarController {
 
-    public static void run() {
+    private final RacingGameService racingGameService = new RacingGameServiceImpl();
+    private final RacingCarService racingCarService = new RacingCarServiceImpl();
+    private final RacingGameEndService racingGameEndService = new RacingGameEndServiceImpl();
+
+    public void run() {
 
         // 입력
-        String[] carNames = InputView.getCarNames();
-        int freq = InputView.getFreq();
+        List<String> carNames = InputView.getCarNames();
+        int round = InputView.getFreq();
+        System.out.println("실행 결과");
+
+        // 객체 생성
 
         // TODO : 실행 로직 수행
-        // input : carNames, freq
-        // output : racing_result_map (random count), winner
+        List<RacingCar> racingCars = racingCarService.createRacingCar(carNames);
+        racingGameService.playGame(racingCars, round);
 
         // 출력
-        // OutputView.printProgress(racing_result_map);
-        // OutputView.getResult(winner);
+        System.out.print("최종 우승자 : " + racingGameEndService.endGame(racingCars));
 
-        // test 출력
-        for (String carName : carNames) {
-            System.out.println(carName);
-        }
-        System.out.println("시도 횟수" + freq);
+
     }
 }
