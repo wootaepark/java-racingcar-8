@@ -9,6 +9,7 @@ import racingcar.service.RacingGameEndServiceImpl;
 import racingcar.service.RacingGameService;
 import racingcar.service.RacingGameServiceImpl;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
@@ -25,12 +26,12 @@ public class RacingCarController {
 
         // 객체 생성
 
-        // TODO : 실행 로직 수행
+        // 실행 로직 수행
         List<RacingCar> racingCars = racingCarService.createRacingCar(carNames);
         racingGameService.playGame(racingCars, round);
 
         // 출력
-        System.out.print("최종 우승자 : " + racingGameEndService.endGame(racingCars));
+        OutputView.printWinners(racingGameEndService.endGame(racingCars));
 
 
     }
